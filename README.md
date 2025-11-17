@@ -35,7 +35,7 @@ CQVE, veriyi tek bir algoritma ile şifrelemek yerine, onu üç farklı matemati
 Projeyi klonlayın ve çalıştırın. Harici bir kütüphane gerektirmez (Standart Python kütüphaneleri kullanılır).
 
 ```bash
-git clone [https://github.com/MrSpy00/CQVE.git](https://github.com/MrSpy00/CQVE.git)
+git clone https://github.com/MrSpy00/CQVE
 cd CQVE
 python CQVE.py
 ```
