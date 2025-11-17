@@ -8,6 +8,8 @@
 
 **CQVE (CodexCore Quantum Vortex Engine)**, standart şifreleme algoritmalarının öngörülebilirliğine meydan okuyan, Python tabanlı, yeni nesil hibrit bir şifreleme protokolüdür. Feistel ağları, Kafes (Lattice) tabanlı gürültü üretimi ve akışkan difüzyon tekniklerini birleştirerek verilerinizi çok katmanlı bir koruma altına alır.
 
+NOT: Yapay zeka desteği, önerileri ve düzeltmeleri içerir.
+
 ---
 
 ## 🚀 Özellikler
