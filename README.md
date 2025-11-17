@@ -2,7 +2,6 @@
 
 ![Version](https://img.shields.io/badge/version-3.0-blueviolet.svg)
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Security](https://img.shields.io/badge/Encryption-Hybrid-red.svg)
 
 > **"Sıradan şifrelemenin ötesinde: Kaotik, Akışkan ve Kırılamaz."**
@@ -39,3 +38,4 @@ Projeyi klonlayın ve çalıştırın. Harici bir kütüphane gerektirmez (Stand
 git clone [https://github.com/MrSpy00/CQVE.git](https://github.com/MrSpy00/CQVE.git)
 cd CQVE
 python CQVE.py
+```
