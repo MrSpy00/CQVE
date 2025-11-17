@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB.svg)
 ![Security](https://img.shields.io/badge/Encryption-Hybrid-red.svg)
 
-> **"Sıradan şifrelemenin ötesinde: Kaotik, Akışkan ve Kırılamaz."**
+> **"Sıradan şifrelemenin ötesinde: Kaotik, Akışkan ve Kırılamaz (zor)."**
 
 **CQVE (CodexCore Quantum Vortex Engine)**, standart şifreleme algoritmalarının öngörülebilirliğine meydan okuyan, Python tabanlı, yeni nesil hibrit bir şifreleme protokolüdür. Feistel ağları, Kafes (Lattice) tabanlı gürültü üretimi ve akışkan difüzyon tekniklerini birleştirerek verilerinizi çok katmanlı bir koruma altına alır.
 
@@ -14,14 +14,14 @@ NOT: Yapay zeka desteği, önerileri ve düzeltmeleri içerir.
 
 ## 🚀 Özellikler
 
-### 🔐 3-Katmanlı Kriptografik Çekirdek
+### 🔐 3 Katmanlı Kriptografik Çekirdek
 CQVE, veriyi tek bir algoritma ile şifrelemek yerine, onu üç farklı matematiksel evrenden geçirir:
 
 1.  **Feistel Network (64 Tur):** Veri blokları, 64 tur boyunca sağ ve sol bloklar arasında karmaşık XOR ve bit kaydırma işlemlerine tabi tutulur.
 2.  **Lattice Noise Injection:** Veriye, anahtar türevli matematiksel bir gürültü enjekte edilerek frekans analizi imkansız hale getirilir.
 3.  **Fluid Diffusion (Akışkan Difüzyon):** Veri baytları, "Chaos Theory" prensiplerine benzer şekilde, anahtara bağlı rastgelelik ile yeniden konumlandırılır.
 
-### 🛡️ Askeri Düzeyde Bütünlük
+### 🛡️ İleri Düzeyde Bütünlük
 * **SHA3-512 & HMAC:** Veri sadece şifrelenmez, aynı zamanda imzalanır. Şifreli metin üzerinde yapılan en ufak bir değişiklik (bit-flip saldırıları), şifre çözme sırasında tespit edilir.
 * **Dinamik Tuzlama (Salting):** Her işlemde benzersiz bir `salt` ve `timestamp` kullanılır. Aynı metin ve şifre ile yapılan işlemler bile her seferinde farklı çıktı üretir.
 
