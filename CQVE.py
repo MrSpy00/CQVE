@@ -229,6 +229,7 @@ def banner():
       ╚═════╝  ╚══▀▀═╝   ╚═══╝  ╚══════╝{Colors.RESET}
     {Colors.BOLD}>> CodexCore Security | CQVE Protocol v3.0{Colors.RESET}
     {Colors.CYAN}>> CodexCore Quantum Vortex Engine{Colors.RESET}
+    {Colors.YELLOW}>> https://github.com/MrSpy00/{Colors.RESET}
     """)
 
 def intro_animation():
