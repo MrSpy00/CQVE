@@ -1,43 +1,39 @@
-# 🛡️ CQVE - CodexCore Quantum Vortex Engine
+# CQVE (Experimental / Educational Cryptography Exercise)
 
-![Version](https://img.shields.io/badge/version-3.0-blueviolet.svg)
+> **UYARI / WARNING:** Bu proje **yalnızca eğitim ve deneysel amaçlı** yazılmış özel bir şifreleme denemesidir. **Production ortamında, gerçek veri güvenliği veya hassas iletişim için KULLANMAYIN.** Gerçek uygulamalar için AES-GCM, ChaCha20-Poly1305 ve Argon2id gibi standart, doğrulanmış kütüphaneleri (`cryptography`, `libsodium`, OpenMLS vb.) kullanın.
+>
+> *This repository is an **experimental, educational exercise** (late 2025). **Do NOT use it in production** or for real confidentiality. Use audited standard primitives such as AES-GCM, ChaCha20-Poly1305, and Argon2id instead.*
+
+![Status](https://img.shields.io/badge/Status-Experimental%20%2F%20Educational-orange.svg)
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB.svg)
-![Security](https://img.shields.io/badge/Encryption-Hybrid-red.svg)
-
-> **"Sıradan şifrelemenin ötesinde: Kaotik, Akışkan ve Kırılamaz (zor)."**
-
-**CQVE (CodexCore Quantum Vortex Engine)**, standart şifreleme algoritmalarının öngörülebilirliğine meydan okuyan, Python tabanlı, yeni nesil hibrit bir şifreleme protokolüdür. Feistel ağları, Kafes (Lattice) tabanlı gürültü üretimi ve akışkan difüzyon tekniklerini birleştirerek verilerinizi çok katmanlı bir koruma altına alır.
-
-NOT: Yapay zeka desteği, önerileri ve düzeltmeleri içerir.
+![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
 ---
 
-## 🚀 Özellikler
+## Nedir / Ne Değildir?
 
-### 🔐 3 Katmanlı Kriptografik Çekirdek
-CQVE, veriyi tek bir algoritma ile şifrelemek yerine, onu üç farklı matematiksel evrenden geçirir:
+`CQVE.py`, kriptografik yapı taşlarını (blok şifreleme turları, permütasyon, tuzlama ve Encrypt-then-MAC) sıfırdan Python ile denemek amacıyla yazılmış bir CLI prototipidir. Kod içindeki sınıf ve metot isimleri ("Quantum Vortex", "Lattice", "Fluid Diffusion") erken dönem deneysel adlandırmalardır; gerçekte kuantum dirençli kafes (lattice) veya kaos matematiği içermez.
 
-1.  **Feistel Network (64 Tur):** Veri blokları, 64 tur boyunca sağ ve sol bloklar arasında karmaşık XOR ve bit kaydırma işlemlerine tabi tutulur.
-2.  **Lattice Noise Injection:** Veriye, anahtar türevli matematiksel bir gürültü enjekte edilerek frekans analizi imkansız hale getirilir.
-3.  **Fluid Diffusion (Akışkan Difüzyon):** Veri baytları, "Chaos Theory" prensiplerine benzer şekilde, anahtara bağlı rastgelelik ile yeniden konumlandırılır.
+### Kodun Gerçekte Uyguladığı Yapı (`CQVE.py`)
 
-### 🛡️ İleri Düzeyde Bütünlük
-* **SHA3-512 & HMAC:** Veri sadece şifrelenmez, aynı zamanda imzalanır. Şifreli metin üzerinde yapılan en ufak bir değişiklik (bit-flip saldırıları), şifre çözme sırasında tespit edilir.
-* **Dinamik Tuzlama (Salting):** Her işlemde benzersiz bir `salt` ve `timestamp` kullanılır. Aynı metin ve şifre ile yapılan işlemler bile her seferinde farklı çıktı üretir.
-
-### 💻 Kullanıcı Deneyimi
-* **Cross-Platform Pano Desteği:** Windows, Linux ve macOS üzerinde panodan otomatik kopyalama/yapıştırma.
-* **Akıllı Dosya Yönetimi:** Çıktıları masaüstüne çakışma olmadan otomatik kaydeder.
-* **CLI Arayüzü:** Hacker estetiğine sahip, renkli ve daktilo efektli komut satırı arayüzü.
+| Bileşen | Kodda Gerçekte Kullanılan Yöntem | Güvenlik Notu |
+|---|---|---|
+| **Anahtar Türetme (KDF)** | Tek geçiş `SHAKE-256(SHA3-512(password + salt + timestamp))` | PBKDF2/Argon2 iterasyonu veya bellek zorluğu yoktur; parola tahmin saldırılarına açıktır. |
+| **Blok Dönüşümü** | 64-bit bloklar üzerinde 64 turlu Feistel ağı (`rotl5 * 2654435761`) | Eğitim amaçlı özel round fonksiyonudur; standart blok şifrelerin (AES) yerini tutmaz. |
+| **Akış Katmanı (`_lattice_transform`)** | Lineer Eşlenik Üreteç (LCG: `(k * 1664525 + 1013904223) % 256`) ile toplamsal bayt kaydırma | Kafes kriptografisi değildir; LCG kriptografik olarak güvenli değildir. |
+| **Permütasyon (`_fluid_diffusion`)** | `random.Random(seed).shuffle(indices)` (Mersenne Twister) | `random` modülü CSPRNG değildir; yalnızca bayt yer değiştirme (transpozisyon) yapar. |
+| **Bütünlük & Tuzlama** | `os.urandom(32)` salt + şifreli metin üzerinde `HMAC-SHA3-512` (`hmac.compare_digest`) | Standart Encrypt-then-MAC yaklaşımıdır. |
 
 ---
 
-## 📦 Kurulum
+## Kurulum ve Çalıştırma (Yalnızca İnceleme / Test İçin)
 
-Projeyi klonlayın ve çalıştırın. Harici bir kütüphane gerektirmez (Standart Python kütüphaneleri kullanılır).
+Harici bağımlılık gerektirmez, Python 3 standart kütüphaneleriyle çalışır:
 
 ```bash
-git clone https://github.com/MrSpy00/CQVE
+git clone https://github.com/MrSpy00/CQVE.git
 cd CQVE
 python CQVE.py
 ```
+
+*Not: Proje erken dönem bir öğrenme çalışmasıdır. Güncel kriptografi kullanımım için standart OpenMLS, Double Ratchet ve AES-256-GCM kullanan [veilanon](https://github.com/MrSpy00/veilanon) projesine bakabilirsiniz.*
